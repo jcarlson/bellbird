@@ -1,0 +1,7 @@
+one:
+  id: 1
+  text: this is the first alarm
+
+two:
+  id: 2
+  text: this is the second alarm

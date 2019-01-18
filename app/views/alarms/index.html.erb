@@ -1,0 +1,7 @@
+<h1>Alarms</h1>
+
+<ul>
+  <% @alarms.each do |alarm| %>
+  <li><%= alarm.id %> -- <%= alarm.text %></li>
+  <% end %>
+</ul>
