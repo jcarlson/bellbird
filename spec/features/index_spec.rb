@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Alarms Index' do
   fixtures :alarms
 
-  let(:alarm1) { alarms(:one) }
-  let(:alarm2) { alarms(:two) }
+  let(:alarm1) { alarms(:oldest) }
+  let(:alarm2) { alarms(:newest) }
 
   scenario 'visit alarm index' do
     visit '/index'

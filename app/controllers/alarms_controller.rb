@@ -1,6 +1,6 @@
 class AlarmsController < ApplicationController
   def index
-    @alarms = Alarm.all
+    @alarms = Alarm.by_recency
   end
 
   def create

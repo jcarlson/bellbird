@@ -1,7 +1,9 @@
-one:
-  id: 1
-  text: this is the first alarm
-
-two:
+newest:
   id: 2
-  text: this is the second alarm
+  text: this is the newest alarm
+  created_at: 2019-01-18T12:00:00Z
+
+oldest:
+  id: 1
+  text: this is the oldest alarm
+  created_at: 2019-01-17T12:00:00Z
