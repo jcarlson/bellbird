@@ -12,6 +12,11 @@
 <h1>All Alarms</h1>
 <ul>
   <% @alarms.each do |alarm| %>
-  <li><%= alarm.id %> -- <%= alarm.text %></li>
+  <li>
+    <%= form_for alarm, url: vote_alarm_path(alarm) do |f| %>
+      <%= alarm.id %> -- <%= alarm.text %> -- <span id="alarm_<%= alarm.id %>_votes"><%= alarm.votes %></span>
+      <%= f.submit '+1' %>
+    <% end %>
+  </li>
   <% end %>
 </ul>

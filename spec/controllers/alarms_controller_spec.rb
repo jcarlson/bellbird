@@ -10,8 +10,17 @@ RSpec.describe AlarmsController, type: :controller do
   end
 
   describe 'POST #create' do
-    it 'returns http success' do
+    it 'redirects to :index' do
       post :create, params: { alarm: { text: 'this is a new alarm' } }
+      expect(response).to redirect_to(:index)
+    end
+  end
+
+  describe 'PATCH #votes' do
+    fixtures :alarms
+
+    it 'redirects to :index' do
+      patch :vote, params: { id: alarms(:oldest) }
       expect(response).to redirect_to(:index)
     end
   end

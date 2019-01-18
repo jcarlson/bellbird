@@ -21,4 +21,14 @@ RSpec.describe 'Alarms Index' do
       click_on 'Create Alarm'
     }.to change { Alarm.count }.by(1)
   end
+
+  scenario 'vote for alarm' do
+    visit '/index'
+
+    expect {
+      within("#edit_alarm_#{alarm1.id}") { click_on '+1' }
+    }.to change { page.find("#alarm_#{alarm1.id}_votes").text }
+           .from('0').to('1')
+           .and change { alarm1.reload.votes }.from(0).to(1)
+  end
 end

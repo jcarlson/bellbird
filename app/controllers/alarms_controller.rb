@@ -4,7 +4,12 @@ class AlarmsController < ApplicationController
   end
 
   def create
-    @alarm = Alarm.create! params.require(:alarm).permit(:text)
+    Alarm.create! params.require(:alarm).permit(:text)
+    redirect_to :index
+  end
+
+  def vote
+    Alarm.vote_for! params[:id]
     redirect_to :index
   end
 end
