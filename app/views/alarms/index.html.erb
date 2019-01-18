@@ -1,5 +1,15 @@
-<h1>Alarms</h1>
+<h1>New Alarm</h1>
 
+<%= form_for Alarm.new do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+
+  <%= f.submit 'Create Alarm' %>
+<% end  %>
+
+<hr>
+
+<h1>All Alarms</h1>
 <ul>
   <% @alarms.each do |alarm| %>
   <li><%= alarm.id %> -- <%= alarm.text %></li>
