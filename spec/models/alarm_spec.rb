@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Alarm' do
   fixtures :alarms
 
-  describe '.before_save' do
+  describe 'callbacks' do
+    before do
+      allow(SomeAPI).to receive(:notify!)
+    end
+
     it 'upcases alarm text' do
       alarm = Alarm.new text: 'lowercase'
       expect { alarm.save! }.to change { alarm.text }.to('LOWERCASE')
@@ -12,6 +16,12 @@ RSpec.describe 'Alarm' do
     it 'ignores empty text' do
       alarm = Alarm.new text: nil
       expect { alarm.save! }.to_not change { alarm.text }
+    end
+
+    it 'notifies some api' do
+      alarm = Alarm.create! text: 'some alarm'
+
+      expect(SomeAPI).to have_received(:notify!).with(alarm)
     end
   end
 
